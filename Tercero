@@ -1,0 +1,44 @@
+@Override
+public void deleteFirts(){
+    Node<T> nodeHeadAux = head;
+    if (isEmpty()){
+        System.out.println("La lista esta vacía");
+    }
+    else{
+        if (head.getNextNode()== head.getPreviousNode()){
+            head = null;
+        }
+        else{
+            while (nodeHeadAux.getNextNode()!= head){
+                nodeHeadAux = nodeHeadAux.getNextNode();
+            }
+            
+            nodeHeadAux.setNextNode(head.getNextNode());
+            head.getNextNode().setPreviousNode(nodeHeadAux);
+            head = head.getNextNode;
+            }
+        }
+}
+
+@Override
+public void search(T d){
+    boolean checkFounded = false;
+    
+    if(isEmpty()){
+        return false;
+    }
+    else{
+        DoubleNode<T> currentNode = head.getPreviousNode();
+        do{
+            if (currentNode.getData() == d){
+                checkFounded = true;
+            }
+            currentNode = currentNode.getPreviousNode();
+        }while (currentNode != head.getPreviousNode() && checkFounded != true);
+        
+        if((int)currentNode.getNextNode().getData()==(int)d){
+            checkFounded = true;
+        }
+    }
+    return checkFounded;
+}
