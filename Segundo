@@ -1,0 +1,31 @@
+public void addOrdered(){
+    
+}
+
+
+@Override
+public boolean delete(T d){
+    boolean checkDeleted = false;
+    DoubleNode<T> currentNode = head;
+    DoubleNode<T> before = null;
+    
+    while (currentNode != null){
+        if (currentNode.getData() == d){
+            if (before == null){
+                head = head.getNextNode();
+                currentNode.srtNextNode(null);
+                currentNode = head;
+            }
+            else{
+                before.setNextNode(currentNode.getNextNode());
+                currentNode.setNextNode(null);
+                currentNode = before.getNextNode();
+            }
+        }else{
+            before = currentNode;
+            currentNode = currentNode.getNextNode();
+        }
+    }
+
+    return checkDeleted;
+}
