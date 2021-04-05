@@ -1,0 +1,22 @@
+@Override
+public void search(T d){
+    boolean checkFounded = false;
+    
+    if(isEmpty()){
+        return false;
+    }
+    else{
+        DoubleNode<T> currentNode = head.getPreviousNode();
+        do{
+            if (currentNode.getData() == d){
+                checkFounded = true;
+            }
+            currentNode = currentNode.getPreviousNode();
+        }while (currentNode != head.getPreviousNode() && checkFounded != true);
+        
+        if((int)currentNode.getNextNode().getData()==(int)d){
+            checkFounded = true;
+        }
+    }
+    return checkFounded;
+}
