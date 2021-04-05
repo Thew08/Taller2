@@ -1,0 +1,83 @@
+@Override
+
+
+public boolean isEmpty(){
+    return head == null;
+}
+
+@Override
+public void addLast(T d){
+    Node<T> newNode = new Node<>(d);
+    Node<T> currentNode = head;
+    Node<T> currentNode2 = head;
+    int cont = 0;
+
+    boolean checked = false;
+
+    while ((currentNode2 != null)&&(checked == false)){
+        if((int)currentNode2.getData()==(int)d){
+            System.out.println("El dato está en la lista");
+            checked = true;                 
+        }
+        currentNode2 = currentNode2.getNextNode();
+    }
+
+    if (checked == false){
+        while(currentNode.getNextNode()!= null){
+            currentNode = currentNode.getNextNode();
+        }
+        
+        currentNextNode.setNextNode(newNode);
+        cont++;
+}
+}
+
+@Override
+public void addAfter(T a,T b){
+    
+    boolean checked = false;
+    Node <T> newNode = new Node<>(a);
+    int cont = 0;
+    
+    for (Node<T> i = head; i != null; i = i.getNextNode()){
+        if (i.getData() == b){
+            newNode.setNextNode(i.getNextNode());
+            i.setNextNode(newNode);
+            cont++;
+            checked = true;
+        }
+    }
+    
+    if (checked == false){
+        System.out.println("El dato no existe");
+    }
+}
+
+
+@Override
+public void deleteLast(){
+
+    int cont = 0;
+    
+    if (isEmpty()){
+        System.out.println("La lista está vacía");
+    }
+    else{
+        if (head != null){
+            Node<T> currentNode = head;
+            
+            while (currentNode.getNextNode() != null){
+                currentNode = currentNode.getNextNode();}
+            
+            Node<T> currentNode2 = head;
+            while (currentNode2.getNextNode()!=currentNode){
+                currentNode2 = currentNode2.getNextNode(); }
+            
+            currentNode = currentNode2;
+            currentNode.setNextNode(null);
+            cont--; }
+        else{
+            head = tail = null;
+        }
+    }
+}
